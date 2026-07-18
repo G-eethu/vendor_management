@@ -50,7 +50,8 @@
    "fieldname": "vendor_type",
    "fieldtype": "Select",
    "label": "Vendor Type",
-   "options": "\nMaterial Supplier\nContractor\nService Provider"
+   "options": "\nMaterial Supplier\nContractor\nService Provider",
+   "reqd": 1
   },
   {
    "fieldname": "annual_turnover",
@@ -85,7 +86,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-17 02:10:43.709942",
+ "modified": "2026-07-17 03:01:08.948690",
  "modified_by": "Administrator",
  "module": "Vendor Management",
  "name": "Vendor Onboarding Request",

@@ -2,42 +2,27 @@ import frappe
 from frappe import _
 from frappe.utils import cint
 
-
-@frappe.whitelist(allow_guest=False)
+# create a new Vendor Onboarding Request
+@frappe.whitelist(allow_guest=True)
 def create_request():
-    """
-    Create Vendor Onboarding Request
-    """
-
     data = frappe.local.form_dict
 
-    vendor = frappe.get_doc({
+    doc = frappe.get_doc({
         "doctype": "Vendor Onboarding Request",
         "vendor_name": data.get("vendor_name"),
-        "vendor_type": data.get("vendor_type"),
         "contact_person": data.get("contact_person"),
         "email": data.get("email"),
-        "phone": data.get("phone"),
-        "gst_number": data.get("gst_number"),
-        "annual_turnover": data.get("annual_turnover") or 0,
-        "documents_submitted": cint(data.get("documents_submitted", 0))
+        "phone": data.get("phone") or '',
+        "gst_number": data.get("gst_number") or '',
+        "annual_turnover": cint(data.get("annual_turnover")),
+        "vendor_type": data.get("vendor_type")
     })
-
-    vendor.insert(ignore_permissions=True)
-    frappe.db.commit()
-
-    return {
-        "success": True,
-        "message": "Vendor Request Created",
-        "data": {
-            "name": vendor.name,
-            "workflow_state": vendor.workflow_state,
-            "vendor_name": vendor.vendor_name
-        }
-    }
+    doc.insert(ignore_permissions=True)
+    return {"name": doc.name, "message": _("Vendor Onboarding Request created successfully")}
 
 
-@frappe.whitelist(allow_guest=False)
+# create a new Vendor Onboarding Request
+@frappe.whitelist(allow_guest=True)
 def get_request(name):
 
     if not frappe.db.exists("Vendor Onboarding Request", name):
@@ -57,3 +42,25 @@ def get_request(name):
         "workflow_state": doc.workflow_state,
         "documents_submitted": doc.documents_submitted
     }
+
+@frappe.whitelist(allow_guest=True)
+def get_all_requests():
+    requests = frappe.get_all(
+        "Vendor Onboarding Request",
+        fields=[
+            "name",
+            "vendor_name",
+            "vendor_type",
+            "contact_person",
+            "email",
+            "phone",
+            "gst_number",
+            "annual_turnover",
+            "workflow_state",
+            "documents_submitted"
+        ],
+        order_by="creation desc"
+    )
+
+    return requests
+

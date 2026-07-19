@@ -1,41 +1,47 @@
-### Vendor Management
+# Vendor Management
 
-Vendor Management
+A custom ERPNext/Frappe application for managing vendor onboarding requests with validations, approval workflow, automatic supplier creation, REST APIs, reporting, and automated tests.
 
-### Installation
+## Setup Instructions
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+1. Get the app.
+   ```bash
+   bench get-app <repository_url>
+   ```
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app vendor_management
-```
+2. Install the app.
+   ```bash
+   bench --site <site_name> install-app vendor_management
+   ```
 
-### Contributing
+3. Run migrations.
+   ```bash
+   bench --site <site_name> migrate
+   ```
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+## Assumptions
 
-```bash
-cd apps/vendor_management
-pre-commit install
-```
+- Email is mandatory.
+- GST Number is optional but must be valid if provided.
+- Annual Turnover cannot be negative.
+- Supplier is created only after the request is approved.
+- Duplicate suppliers are prevented using GST Number or Supplier Name.
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+## API Documentation
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+- **Create Vendor Request**
+  - `POST /api/method/vendor_management.api.api.create_request`
 
-### CI
+- **Get Vendor Request**
+  - `GET /api/method/vendor_management.api.api.get_request?name=<request_name>`
 
-This app can use GitHub Actions for CI. The following workflows are configured:
+## Design Decisions
 
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
+- Business validations are implemented in the DocType controller.
+- Supplier creation is automated after approval.
+- Duplicate supplier creation is prevented by checking existing records.
+- A Script Report summarizes requests grouped by Vendor Type.
 
+## License
 
-### License
-
-mit
+MIT

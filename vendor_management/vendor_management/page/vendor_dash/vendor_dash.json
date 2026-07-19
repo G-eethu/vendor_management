@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2026-07-17 23:00:00.396489",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-07-17 23:00:00.396489",
+ "modified_by": "Administrator",
+ "module": "Vendor Management",
+ "name": "vendor-dash",
+ "owner": "Administrator",
+ "page_name": "vendor-dash",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Vendor Dash"
+}

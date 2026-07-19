@@ -63,4 +63,3 @@ def get_all_requests():
     )
 
     return requests
-

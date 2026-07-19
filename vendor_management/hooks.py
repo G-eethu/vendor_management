@@ -27,6 +27,10 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/vendor_management/css/vendor_management.css"
 # app_include_js = "/assets/vendor_management/js/vendor_management.js"
+# include js, css files in header of desk.html
+app_include_js = [
+	"/assets/vendor_management/js/overrides/workspace.js",
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/vendor_management/css/vendor_management.css"

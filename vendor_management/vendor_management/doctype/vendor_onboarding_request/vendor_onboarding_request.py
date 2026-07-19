@@ -47,27 +47,12 @@ class VendorOnboardingRequest(Document):
             )
 
     def create_supplier(self):
-
-        # Only create after approval
         if self.workflow_state != "Approved":
             return
 
-        # Already linked
         if self.get("supplier"):
             return
 
-        # Duplicate by GSTIN
-        if self.gst_number:
-            supplier = frappe.db.exists(
-                "Supplier",
-                {"gstin": self.gst_number}
-            )
-
-            if supplier:
-                self.db_set("supplier", supplier)
-                return
-
-        # Duplicate by Name
         supplier = frappe.db.exists(
             "Supplier",
             {"supplier_name": self.contact_person}
@@ -82,7 +67,6 @@ class VendorOnboardingRequest(Document):
             "supplier_name": self.contact_person,
             "supplier_group": "All Supplier Groups",
             "supplier_type": self.vendor_type,
-            "gstin": self.gst_number
         })
 
         supplier.insert(ignore_permissions=True)

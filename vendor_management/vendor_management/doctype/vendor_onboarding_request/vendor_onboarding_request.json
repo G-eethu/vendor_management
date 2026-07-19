@@ -71,6 +71,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Status",
    "options": "Workflow State"
   },
@@ -86,7 +87,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-17 03:01:08.948690",
+ "modified": "2026-07-19 06:07:46.474529",
  "modified_by": "Administrator",
  "module": "Vendor Management",
  "name": "Vendor Onboarding Request",

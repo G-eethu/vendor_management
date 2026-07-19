@@ -1,0 +1,35 @@
+{
+ "attach_files": "",
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "",
+ "creation": "2026-07-19 05:21:42.834960",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Vendor Onboarding Request",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<h3>Vendor Onboarding Request</h3>\n\n<p>\n    The Vendor Onboarding Request <strong>{{ doc.name }}</strong> has been\n    <strong>{{ doc.workflow_state }}</strong>. Please take the necessary action.\n</p>\n\n<h4>Details</h4>\n\n<ul>\n    <li><strong>Vendor Name:</strong> {{ doc.vendor_name }}</li>\n    <li><strong>Contact Person:</strong> {{ doc.contact_person }}</li>\n    <li><strong>Vendor Type:</strong> {{ doc.vendor_type }}</li>\n</ul>",
+ "message_type": "Markdown",
+ "modified": "2026-07-19 05:41:24.248973",
+ "modified_by": "Administrator",
+ "module": "Vendor Management",
+ "name": "Vendor Notification",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": "Vendor Onboarding Requester"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "Geethuk626",
+ "sender_email": "geethuk626@gmail.com",
+ "set_property_after_alert": "",
+ "subject": "{{ doc.name }} {{doc.workflow_state}}",
+ "value_changed": "workflow_state"
+}

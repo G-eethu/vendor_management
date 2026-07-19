@@ -56,7 +56,8 @@
   {
    "fieldname": "annual_turnover",
    "fieldtype": "Currency",
-   "label": "Annual Turnover"
+   "label": "Annual Turnover",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -87,7 +88,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-19 06:07:46.474529",
+ "modified": "2026-07-19 06:33:32.925654",
  "modified_by": "Administrator",
  "module": "Vendor Management",
  "name": "Vendor Onboarding Request",
